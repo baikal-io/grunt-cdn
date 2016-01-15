@@ -120,6 +120,8 @@ Job.prototype._replace = function (resource) {
   if (relativeTo.match(/^\/\/\w/)) {
     src = src.replace(/^\/(\w)/, '\/\/$1');
   }
+  
+  src = src.replace(/%7B%7B/g, '{{').replace(/%7D%7D/g, '}}');
 
   self.emit('entry', {
     before: resourceUrl.pathname,
